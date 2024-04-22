@@ -2,10 +2,10 @@ import express from 'express';
 
 const app = express();
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-	res.sendFile('index.html');
+	res.send('<h1>Home Page</h1>');
 });
 
 app.get('/users', (req, res) => {
