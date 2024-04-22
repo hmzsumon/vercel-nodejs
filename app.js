@@ -5,7 +5,14 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-	res.sendFile('index.html', { root: './' });
+	res.sendFile('myfile.html', { root: __dirname + '/public' }, (err) => {
+		if (err) {
+			console.error('Error sending file:', err);
+			res.status(err.status).end();
+		} else {
+			console.log('File sent successfully');
+		}
+	});
 });
 
 app.get('/users', (req, res) => {
